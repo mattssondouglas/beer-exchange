@@ -1,0 +1,16 @@
+<body>
+	<!-- Navbar -->
+	{{>nav}}
+    <div class="container mt-4">
+      <div class="card bg-danger" style="--bs-bg-opacity: .2;">
+        <div class="card-body">
+          <span>{{message}}</span>
+        </div>
+      </div>
+      <div class="error-text mt-4">
+        <p>
+					{{error.stack}}
+        </p>
+      </div>
+    </div>
+  </body>
