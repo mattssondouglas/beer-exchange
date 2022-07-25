@@ -11,8 +11,8 @@ module.exports = mongoose.model('orders', {
   },
   date: {
     type: Date,
-    required: true,
-    default: Date.now
+    default: Date.now,
+    required: true
   },
   price: {
     type: Number,
