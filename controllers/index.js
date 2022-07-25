@@ -5,8 +5,8 @@ const router = express.Router()
 // Create POST controller
 
 // Create GET controller
-router.get('/', async (req, res) => {
-  res.redirect('/orders')
+router.get('/', (req, res) => {
+  res.render('pos.hbs')
 })
 
 // Create PATCH controller

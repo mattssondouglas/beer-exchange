@@ -42,7 +42,6 @@ mongoose.connect(
 )
 
 // Routes
-
 // ::::
 // Create your routes here
 app.use('/', require('./controllers/index.js'))
