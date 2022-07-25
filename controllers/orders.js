@@ -20,13 +20,9 @@ router.post('/', async (req, res) => {
 // Create GET controller
 router.get('/', async (req, res) => {
   let test = { beer: '62de495d2d09db30945b410a', price: 35 }
-  console.log(test)
-  let order = await Orders.create(test)
-  console.log(order)
 
-  console.log(res)
-  console.log(req)
-  console.log('Hello from GET')
+  let order = await Orders.create(test)
+
   res.render('orders')
 })
 
