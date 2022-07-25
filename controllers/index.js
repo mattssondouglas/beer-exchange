@@ -6,7 +6,7 @@ const router = express.Router()
 
 // Create GET controller
 router.get('/', (req, res) => {
-  res.render('beers.hbs')
+  res.render('beers')
 })
 
 // Create PATCH controller
