@@ -11,9 +11,6 @@ router.post('/', async (req, res) => {
   // } else {
   //   res.redirect('/auth/login')
   // }
-  let username = 'kaz'
-  console.log(username)
-  console.log(req)
   let test = { beer: 'Hello', price: 25 }
   console.log(test)
   let order = await Orders.create(test)
@@ -22,9 +19,6 @@ router.post('/', async (req, res) => {
 
 // Create GET controller
 router.get('/', async (req, res) => {
-  let username = 'kaz'
-  console.log(username)
-  console.log(req)
   let test = { beer: 'Hello', price: 35 }
   console.log(test)
   let order = await Orders.create(test)
