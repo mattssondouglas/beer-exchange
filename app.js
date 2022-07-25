@@ -46,11 +46,11 @@ mongoose.connect(
 // ::::
 // Create your routes here
 app.use('/', require('./controllers/index.js'))
-app.use('/auth', require('./controllers/auth.js'))
-app.use('/bookings', require('./controllers/bookings.js'))
-app.use('/houses', require('./controllers/houses.js'))
-app.use('/profile', require('./controllers/profile.js'))
-app.use('/reviews', require('./controllers/reviews.js'))
+app.use('/orders', require('./controllers/orders.js'))
+// app.use('/bookings', require('./controllers/bookings.js'))
+// app.use('/houses', require('./controllers/houses.js'))
+// app.use('/profile', require('./controllers/profile.js'))
+// app.use('/reviews', require('./controllers/reviews.js'))
 // ::::
 
 // Catch 404 and forward to error handler
