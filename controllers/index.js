@@ -4,7 +4,7 @@ const router = express.Router()
 // GET route and render 'pos' template
 
 router.get('/', (req, res) => {
-  res.render('pos.hbs')
+  res.render('beers')
 })
 
 // export router
