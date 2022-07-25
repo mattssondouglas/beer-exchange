@@ -5,9 +5,9 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 
 module.exports = mongoose.model('orders', {
   beer: {
-    type: ObjectId,
-    required: true,
-    ref: 'beers'
+    type: String,
+    required: true
+    //  ref: 'beers'
   },
   date: {
     type: Date,
