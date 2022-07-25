@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const Orders = require('../models/orders')
+const History = require('../models/history')
 
 // Create POST controller
 router.post('/', async (req, res) => {
@@ -24,7 +25,7 @@ router.get('/', async (req, res) => {
   let username = 'kaz'
   console.log(username)
   console.log(req)
-  let test = { beer: 'Hello', price: 25 }
+  let test = { beer: 'Hello', price: 35 }
   console.log(test)
   let order = await Orders.create(test)
   console.log(order)
