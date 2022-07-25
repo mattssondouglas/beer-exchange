@@ -12,9 +12,7 @@ router.get('/', (req, res, next) => {
 // POST /
 router.post('/', async (req, res, next) => {
   try {
-    console.log('hello')
     let beer = await Beers.create(req.body)
-    console.log(beer)
     res.redirect('/create')
   } catch (err) {
     next(err)
