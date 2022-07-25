@@ -1,12 +1,19 @@
 // Import Packages
 const express = require('express')
 const router = express.Router()
+const Beers = require('../models/beers')
 
 // Create POST controller
 
 // Create GET controller
-router.get('/', (req, res) => {
-  res.render('beers.hbs')
+router.get('/', async (req, res) => {
+  try {
+    let beers = await Beers.find({})
+    console.log(beers)
+    res.render('beers', { beers })
+  } catch (e) {
+    throw error
+  }
 })
 
 // Create PATCH controller

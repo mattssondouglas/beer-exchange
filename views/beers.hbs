@@ -1,3 +1,5 @@
+
+
 <nav>
 	<div class="container p-2">
 		<div class="row">
@@ -14,141 +16,25 @@
 <div class="Beers item-center p-2">
 	<div class="row row-cols-3">
 		<!-- one button -->
-		<div class="col mb-2">
-			<div class="card">
-				<img src="./images/budlight.jpeg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<div class="row">
-						<div class="col row-cols-2">
-							<span class="text-start">Leo</span>
-						</div>
-						<div class="col">
-							<span class="float-end">80B</span>
+		{{#each beers as |beer|}}
+		<form class="beers" action="index.html" name="beer" method="post">
+			<div class="col mb-2">
+				<div class="card">
+					<button type="submit" name="button"><img src="{{beer.photo}}" class="card-img-top" alt="..."></button>
+					<div class="card-body">
+						<div class="row">
+							<div class="col row-cols-2">
+								<span class="text-start">{{beer.name}}</span>
+							</div>
+							<div class="col">
+								<span class="float-end">{{beer.startingPrice}}฿</span>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</form>
+		{{/each}}
 		<!--  -->
-		<div class="col mb-2">
-			<div class="card">
-				<img src="./images/budlight.jpeg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<div class="row">
-						<div class="col row-cols-2">
-							<span class="text-start">Leo</span>
-						</div>
-						<div class="col">
-							<span class="float-end">80B</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col mb-2">
-			<div class="card">
-				<img src="./images/budlight.jpeg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<div class="row">
-						<div class="col row-cols-2">
-							<span class="text-start">Leo</span>
-						</div>
-						<div class="col">
-							<span class="float-end">80B</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col mb-2">
-			<div class="card">
-				<img src="./images/budlight.jpeg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<div class="row">
-						<div class="col row-cols-2">
-							<span class="text-start">Leo</span>
-						</div>
-						<div class="col">
-							<span class="float-end">80B</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col mb-2">
-			<div class="card">
-				<img src="./images/budlight.jpeg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<div class="row">
-						<div class="col row-cols-2">
-							<span class="text-start">Leo</span>
-						</div>
-						<div class="col">
-							<span class="float-end">80B</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col mb-2">
-			<div class="card">
-				<img src="./images/budlight.jpeg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<div class="row">
-						<div class="col row-cols-2">
-							<span class="text-start">Leo</span>
-						</div>
-						<div class="col">
-							<span class="float-end">80B</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col mb-2">
-			<div class="card">
-				<img src="./images/budlight.jpeg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<div class="row">
-						<div class="col row-cols-2">
-							<span class="text-start">Leo</span>
-						</div>
-						<div class="col">
-							<span class="float-end">80B</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col mb-2">
-			<div class="card">
-				<img src="./images/budlight.jpeg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<div class="row">
-						<div class="col row-cols-2">
-							<span class="text-start">Leo</span>
-						</div>
-						<div class="col">
-							<span class="float-end">80B</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col mb-2">
-			<div class="card">
-				<img src="./images/budlight.jpeg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<div class="row">
-						<div class="col row-cols-2">
-							<span class="text-start">Leo</span>
-						</div>
-						<div class="col">
-							<span class="float-end">80B</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
