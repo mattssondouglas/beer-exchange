@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
   // } else {
   //   res.redirect('/auth/login')
   // }
-  let test = { beer: 'Hello', price: 25 }
+  let test = { beer: '62de495d2d09db30945b410a', price: 25 }
   console.log(test)
   let order = await Orders.create(test)
   console.log(order)
@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
 
 // Create GET controller
 router.get('/', async (req, res) => {
-  let test = { beer: 'Hello', price: 35 }
+  let test = { beer: '62de495d2d09db30945b410a', price: 35 }
   console.log(test)
   let order = await Orders.create(test)
   console.log(order)
