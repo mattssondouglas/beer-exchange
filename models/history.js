@@ -19,6 +19,5 @@ module.exports = mongoose.model('history', {
       lowestPrice: Number,
       highestPrice: Number
     }
-  ],
-  required: true
+  ]
 })
