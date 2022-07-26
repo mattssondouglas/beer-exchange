@@ -17,7 +17,7 @@
 	<div class="row row-cols-3">
 		<!-- one button -->
 		{{#each beers as |beer|}}
-		<form class="beers" action="index.html" name="beer" method="post">
+		<form class="beers" action="./orders/{{beer._id}}" name="beer" method="post">
 			<div class="col mb-2">
 				<div class="card">
 					<button type="submit" name="button"><img src="{{beer.photo}}" class="card-img-top" alt="..."></button>
