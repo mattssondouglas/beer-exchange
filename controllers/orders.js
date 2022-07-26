@@ -3,26 +3,27 @@ const express = require('express')
 const router = express.Router()
 const Orders = require('../models/orders')
 const History = require('../models/history')
+const Beers = require('../models/beers')
 
 // Create POST controller
-router.post('/:id', async (req, res) => {
+router.post('/', async (req, res) => {
   // no authentication planned at present
   // if (req.isAuthenticated()) {
   // } else {
   //   res.redirect('/auth/login')
   // }
-  // console.log(req)
 
   // let check = await Orders.findOne({
   //   beer: '62df7bfaf9179b0bb64d569b'
   // })
 
-  console.log(check)
+  let beer = await Beers.findOne({
+    _id: req.body.id
+  })
 
-  let test = { beer: req.params.id, price: 34 }
-  // console.log(test)
-  let order = await Orders.create(test)
-  // console.log(order)
+  let tempOrder = { beer: req.body.id, price: beer.currentPrice }
+
+  let order = await Orders.create(tempOrder)
 
   // let history = await History.create({
   //   beers: [
