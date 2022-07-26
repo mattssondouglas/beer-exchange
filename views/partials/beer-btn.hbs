@@ -1,0 +1,20 @@
+
+{{#each beers}}
+<form class="beers" action="index.html" name="beer" method="post">
+	<div class="col mb-2">
+		<div class="card">
+			<img src="" class="card-img-top" alt="...">
+			<div class="card-body">
+				<div class="row">
+					<div class="col row-cols-2">
+						<span class="text-start">{{beer}}</span>
+					</div>
+					<div class="col">
+						<span class="float-end">{{price}}฿</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+{{/each }}
