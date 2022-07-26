@@ -2,3 +2,15 @@ img {
   height: 200px;
   width: 100px;
 }
+
+.card-img-top {
+  height: 200px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
+form.beer button {
+  border: none;
+}
