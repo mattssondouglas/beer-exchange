@@ -22,6 +22,7 @@
 		<form class="beer" action="/orders" name="beer" method="post">
 			<div class="col mb-2">
 				<div class="card">
+					<input type="hidden" name="id" value="{{beer.id}}"/>
 					<button type="submit">
 						<div class="card-img-top" style="background-image: url('{{beer.photo}}')"></div>
 					</button>
@@ -30,8 +31,9 @@
 							<div class="col row-cols-2">
 								<span class="text-start">{{beer.name}}</span>
 							</div>
+							<!-- <input type="hidden" name="id" value="{{beer.currentPrice}}"/> -->
 							<div class="col">
-								<span class="float-end">{{beer.startingPrice}}฿</span>
+								<span class="float-end">{{beer.currentPrice}}฿</span>
 							</div>
 						</div>
 					</div>
