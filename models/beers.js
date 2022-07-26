@@ -12,6 +12,11 @@ module.exports = mongoose.model('beers', {
     required: true
   },
 
+  currentPrice: {
+    type: Number,
+    required: true
+  },
+
   minimumPrice: {
     type: Number,
     required: true

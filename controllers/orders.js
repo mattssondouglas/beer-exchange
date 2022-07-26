@@ -11,11 +11,35 @@ router.post('/:id', async (req, res) => {
   // } else {
   //   res.redirect('/auth/login')
   // }
-  console.log(req)
+  // console.log(req)
+
+  // let check = await Orders.findOne({
+  //   beer: '62df7bfaf9179b0bb64d569b'
+  // })
+
+  console.log(check)
+
   let test = { beer: req.params.id, price: 34 }
   // console.log(test)
   let order = await Orders.create(test)
-  //console.log(order)
+  // console.log(order)
+
+  // let history = await History.create({
+  //   beers: [
+  //     {
+  //       beer: order.beer,
+  //       currentPrice: order.price,
+  //       lowestPrice: order.price,
+  //       highestPrice: order.price
+  //     }
+  //   ]
+  // })
+
+  // let history = await History.findOneAndUpdate({
+  // 	beers.beer = order.beer
+  // }, {
+  // 	beers.currentPrice: 50
+  // })
 
   res.redirect('/')
 })
