@@ -20,10 +20,22 @@ router.post('/', async (req, res) => {
   let beer = await Beers.findOne({
     _id: req.body.id
   })
+  let currentPrice = beer.currentPrice
+  let tempOrder = { beer: req.body.id, price: currentPrice }
 
-  let tempOrder = { beer: req.body.id, price: beer.currentPrice }
-
+  // enter order into the orders collection
   let order = await Orders.create(tempOrder)
+
+  let updatedPrice = (currentPrice * 1.02).toFixed(2)
+  // update the current price of the beers
+  await Beers.findOneAndUpdate(
+    {
+      _id: beer.id
+    },
+    {
+      currentPrice: updatedPrice
+    }
+  )
 
   // let history = await History.create({
   //   beers: [
