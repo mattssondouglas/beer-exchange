@@ -47,6 +47,8 @@ mongoose.connect(
 app.use('/', require('./controllers/index.js'))
 app.use('/create', require('./controllers/create.js'))
 app.use('/orders', require('./controllers/orders.js'))
+app.use('/ticker', require('./controllers/ticker.js'))
+
 // ::::
 
 // Catch 404 and forward to error handler
