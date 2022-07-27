@@ -29,14 +29,37 @@ router.post('/', async (req, res, next) => {
 
 // Create PATCH controller
 router.patch('/crash', async (req, res, next) => {
-  console.log(' crash')
   try {
     console.log('Starting crash')
-    if (confirm('Press a button!')) {
-      console.log('You pressed OK!')
-    } else {
-      console.log('You pressed Cancel!')
+    // retrieve all Beers
+    allBeers = await Beers.find({})
+    // console.log(allBeers)
+    const updateDB = async (id, price) => {
+      // console.log('starting func')
+      let mynew = await Beers.findByIdAndUpdate(id, {
+        currentPrice: price
+      })
+      console.log(mynew)
     }
+    // update beer price to be 50% off
+    allBeers.map(beer => {
+      if (beer.currentPrice >= beer.startingPrice) {
+        beer.currentPrice = (beer.currentPrice * 0.5).toFixed(2)
+        updateDB(beer._id, beer.currentPrice)
+      } else if (beer.currentPrice < beer.startingPrice) {
+        beer.currentPrice = beer.minimumPrice * 1.2
+        updateDB(beer._id, beer.currentPrice)
+      }
+      // return beer.save()
+    })
+
+    //console.log(allBeers[2])
+    // update database with updated prices
+    // let beers = await allBeers.save()
+
+    // filter for all beers below starting price
+    // update beer price to be above floor price
+
     res.redirect('/')
   } catch (err) {
     next(err)
