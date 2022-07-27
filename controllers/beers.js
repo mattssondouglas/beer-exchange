@@ -27,5 +27,26 @@ router.post('/', async (req, res, next) => {
   }
 })
 
+// Create PATCH controller
+router.patch('/crash', async (req, res, next) => {
+  console.log(' crash')
+  try {
+    console.log('Starting crash')
+    if (confirm('Press a button!')) {
+      console.log('You pressed OK!')
+    } else {
+      console.log('You pressed Cancel!')
+    }
+    res.redirect('/')
+  } catch (err) {
+    next(err)
+  }
+})
+
+// Create DELETE controller
+
+// Views
+// Create here a controller that accepts GET requests and renders the "search" page
+
 // Export module
 module.exports = router

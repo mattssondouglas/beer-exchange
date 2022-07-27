@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     let beers = await Beers.find({})
+
     // console.log(beers)
     res.render('beers', { beers })
   } catch (err) {
