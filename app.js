@@ -45,7 +45,7 @@ mongoose.connect(
 // ::::
 // Create your routes here
 app.use('/', require('./controllers/index.js'))
-app.use('/create', require('./controllers/create.js'))
+app.use('/create', require('./controllers/beers.js'))
 app.use('/orders', require('./controllers/orders.js'))
 app.use('/ticker', require('./controllers/ticker.js'))
 
