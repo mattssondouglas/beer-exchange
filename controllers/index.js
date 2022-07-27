@@ -4,14 +4,21 @@ const router = express.Router()
 const Beers = require('../models/beers')
 
 // Create POST controller
-
+router.post('/', async (req, res) => {
+  try {
+    console.log('hello')
+    // res.render('beers', { beers })
+  } catch (err) {
+    throw error
+  }
+})
 // Create GET controller
 router.get('/', async (req, res) => {
   try {
     let beers = await Beers.find({})
     // console.log(beers)
     res.render('beers', { beers })
-  } catch (e) {
+  } catch (err) {
     throw error
   }
 })
