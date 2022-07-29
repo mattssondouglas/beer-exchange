@@ -15,23 +15,18 @@ router.get('/', (req, res, next) => {
 
 router.patch('/reset', async (req, res, next) => {
   try {
+    let items = await Beers.updateMany(
+      {},
+      [
+        {
+          $set: {
+            currentPrice: '$startingPrice'
+          }
+        }
+      ],
+      { new: true }
+    )
     let beers = await Beers.find({})
-    beers = beers.map(beer => {
-      beer.currentPrice = beer.startingPrice
-      // return beer
-    })
-    console.log(beers)
-    await beers.save().then(result => {
-      res.send(result)
-    })
-
-    // await beers.forEach(beer => {
-    //   Beers.findByIdAndUpdate(beer._id, {
-    //     currentPrice: beer.startingPrice
-    //   })
-    //   console.log(beers)
-    // })
-
     res.render('beers', { beers })
   } catch (err) {
     next(err)

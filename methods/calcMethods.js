@@ -9,7 +9,7 @@ const priceDrop = beer => {
 const marketCrash = beer => {
   if (beer.currentPrice >= beer.startingPrice) {
     beer.currentPrice = (beer.currentPrice * 0.5).toFixed(2)
-  } else if (beer.currentPrice < beer.startingPrice) {
+  } else if (beer.currentPrice <= beer.startingPrice) {
     beer.currentPrice = (beer.minimumPrice * 1.2).toFixed(2)
   }
   return beer.currentPrice
