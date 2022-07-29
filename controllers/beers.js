@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
 
 // PATCH
 
-router.patch('/', async (req, res, next) => {
+router.patch('/reset', async (req, res, next) => {
   try {
     let beers = await Beers.find({})
     beers = beers.map(beer => {
@@ -54,11 +54,6 @@ router.post('/', async (req, res, next) => {
   } catch (err) {
     next(err)
   }
-})
-
-router.patch('/', async (req, res, next) => {
-  let beers = await Beers.updateMany()
-  res.json(beers)
 })
 
 // Create PATCH controller
