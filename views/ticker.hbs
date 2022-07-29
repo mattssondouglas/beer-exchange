@@ -9,26 +9,14 @@
     </tr>
   </thead>
   <tbody>
+		{{#each beers as |beer|}}
     <tr>
-      <th scope="row">Leo</th>
-      <td>120</td>
-      <td>150</td>
-      <td>95</td>
-			<td>Up</td>
+      <th scope="row">{{beer.name}}</th>
+      <td>{{beer.currentPrice}}</td>
+      <td>find highest price per beer</td>
+      <td>find lowest price per beer</td>
+			<td>if current price is higher than starting price</td>
     </tr>
-		<tr>
-      <th scope="row">Chang</th>
-      <td>130</td>
-      <td>135</td>
-      <td>100</td>
-			<td>Up</td>
-    </tr>
-		<tr>
-      <th scope="row">Singha</th>
-      <td>90</td>
-      <td>110</td>
-      <td>90</td>
-			<td>Down</td>
-    </tr>
+		{{/each}}
   </tbody>
 </table>
