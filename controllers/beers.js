@@ -9,33 +9,6 @@ router.get('/', (req, res, next) => {
   res.render('create')
 })
 
-// PATCH
-
-router.patch('/', async (req, res, next) => {
-  try {
-    let beers = await Beers.find({})
-    beers = beers.map(beer => {
-      beer.currentPrice = beer.startingPrice
-      // return beer
-    })
-    console.log(beers)
-    await beers.save().then(result => {
-      res.send(result)
-    })
-
-    // await beers.forEach(beer => {
-    //   Beers.findByIdAndUpdate(beer._id, {
-    //     currentPrice: beer.startingPrice
-    //   })
-    //   console.log(beers)
-    // })
-
-    res.render('beers', { beers })
-  } catch (err) {
-    next(err)
-  }
-})
-
 // POST /
 router.post('/', async (req, res, next) => {
   try {
