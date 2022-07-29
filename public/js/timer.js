@@ -7,6 +7,19 @@
 
 const updateBeers = async () => {
   console.log('hi')
+  //   let orders = await Orders.find({})
+  //   let order = orders.map(order => order)
+  //   // let history = await History.create({
+  //   //   beers: [
+  //   //     {
+  //   //       beer: order.beer,
+  //   //       currentPrice: order.price,
+  //   //       lowestPrice: order.price,
+  //   //       highestPrice: order.price
+  //   //     }
+  //   //   ]
+  //   // })
+  //   console.log(order)
 }
 
 updateBeers()
