@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     // console.log(beers)
     res.render('beers', { beers })
   } catch (err) {
-    throw error
+    throw err
   }
 })
 

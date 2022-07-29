@@ -13,26 +13,6 @@ router.get('/', (req, res, next) => {
 
 // PATCH
 
-router.patch('/reset', async (req, res, next) => {
-  try {
-    let items = await Beers.updateMany(
-      {},
-      [
-        {
-          $set: {
-            currentPrice: '$startingPrice'
-          }
-        }
-      ],
-      { new: true }
-    )
-    let beers = await Beers.find({})
-    res.render('beers', { beers })
-  } catch (err) {
-    next(err)
-  }
-})
-
 // POST /
 router.post('/', async (req, res, next) => {
   try {
@@ -52,21 +32,37 @@ router.post('/', async (req, res, next) => {
 })
 
 // Create PATCH controller
+router.patch('/decrease', async (req, res, next) => {
+  try {
+    // console.log('hello')
+    let items = await Beers.updateMany(
+      {},
+      [
+        {
+          $set: {
+            currentPrice: {
+              $round: [{ $multiply: ['$currentPrice', 0.98] }, 2]
+            }
+          }
+        }
+        // }
+      ],
+      { new: true }
+    )
+    console.log(items)
+    let beers = await Beers.find({})
+    console.log(beers)
+    res.json(beers)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.patch('/crash', async (req, res, next) => {
   try {
     console.log('Starting crash')
     // retrieve all Beers
     let allBeers = await Beers.find({})
-
-    // Calc.marketCrash
-    // const calcBeer = beer => {
-    //   if (beer.currentPrice >= beer.startingPrice) {
-    //     beer.currentPrice = (beer.currentPrice * 0.5).toFixed(2)
-    //   } else if (beer.currentPrice < beer.startingPrice) {
-    //     beer.currentPrice = (beer.minimumPrice * 1.2).toFixed(2)
-    //   }
-    //   return beer.currentPrice
-    // }
 
     await Promise.all(
       allBeers.map(beer => {
@@ -79,6 +75,26 @@ router.patch('/crash', async (req, res, next) => {
     })
 
     res.redirect('/')
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.patch('/reset', async (req, res, next) => {
+  try {
+    let items = await Beers.updateMany(
+      {},
+      [
+        {
+          $set: {
+            currentPrice: '$startingPrice'
+          }
+        }
+      ],
+      { new: true }
+    )
+    let beers = await Beers.find({})
+    res.render('beers', { beers })
   } catch (err) {
     next(err)
   }
