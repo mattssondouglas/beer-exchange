@@ -35,7 +35,7 @@ router.post('/', async (req, res, next) => {
 router.patch('/decrease', async (req, res, next) => {
   try {
     // console.log('hello')
-    let items = await Beers.updateMany(
+    await Beers.updateMany(
       {},
       [
         {
@@ -49,9 +49,24 @@ router.patch('/decrease', async (req, res, next) => {
       ],
       { new: true }
     )
-    console.log(items)
+
+    await Beers.updateMany(
+      {
+        $expr: { $gt: ['$minimumPrice', '$currentPrice'] }
+        // minimumPrice: { $gte: 'currentPrice' }
+      },
+      [
+        {
+          $set: {
+            currentPrice: '$minimumPrice'
+          }
+        }
+        // }
+      ],
+      { new: true }
+    ) // console.log(items)
     let beers = await Beers.find({})
-    console.log(beers)
+    // console.log(beers)
     res.json(beers)
   } catch (err) {
     next(err)

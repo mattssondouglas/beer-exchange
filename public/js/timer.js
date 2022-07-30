@@ -1,13 +1,20 @@
 // import { Beers } from '../models/beers'
 // console.log('start')
-document.querySelectorAll('.price').innerHTML = 'Hi'
+// document.querySelectorAll('.price').innerHTML = 'Hi'
 
-const decreasePrices = () => {
-  // console.log('decrease prices')
-}
+// const decreasePrices = beer => {
+//   // console.log('decrease prices')
+//   let myContents = (document.querySelectorAll('.price').innerHTML = '80')
+//   // console.log(myContents)
+//
+//   contents.forEach((content, i) => {
+//     content.innerHTML = '80'
+//   })
+// }
+// document.querySelector('.button').innerHTML = 'Hello'
 
 const updateBeers = async () => {
-  // decreasePrices()
+  //
   // console.log('updateBeers')
   // console.log('hi')
 
@@ -16,12 +23,23 @@ const updateBeers = async () => {
   })
     .then(response => response.json())
     .then(beers => {
-      console.log('beers', beers)
-      beers.forEach(beer => {
-        console.log('beer', beer)
+      // console.log('beers', beers)
+      // console.log(beers.length)
+      // console.log(beers[1])
+      // let myContents = document.querySelector('.price').innerHTML[0]
+      // console.log(myContents)
+      // console.log(myContents.length)
+      // beers = JSON.parse(beers)
+      // console.log(beers)
+
+      beers.forEach((beer, i) => {
+        // console.log(document.querySelectorAll('.price')[i].innerHTML) // console.log(myContents)
+
+        document.querySelectorAll('.price')[i].innerHTML = beer.currentPrice
+        // decreasePrices(beer)
+        // console.log('beer', beer)
         // update beers price in the UI
-        document.querySelectorAll('.price').innerHTML =
-          '<span>${beer.price}</span>'
+        // console.log('this is the' + beersList)
       })
     })
     .catch(err => {
@@ -32,13 +50,13 @@ const updateBeers = async () => {
 }
 
 updateBeers()
-
-// let decrease = setInterval(() => {
-//   updateBeers()
-// }, 1 * 1000)
+//
+let decrease = setInterval(() => {
+  updateBeers()
+}, 1 * 1000)
 
 // Stop after 60 seconds
 
-// setInterval(() => {
-//   clearInterval(decrease)
-// }, 5 * 1000)
+setInterval(() => {
+  clearInterval(decrease)
+}, 200 * 1000)
