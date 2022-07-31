@@ -50,6 +50,18 @@ const checkMinimum = async () => {
   )
 }
 
+// updates the current price in the database after an order
+const setCurrentPrice = async (beer, updatedPrice) => {
+  await Beers.findOneAndUpdate(
+    {
+      _id: beer.id
+    },
+    {
+      currentPrice: updatedPrice
+    }
+  )
+}
+
 // checks if the current price of each beer is lower than the lowest price and updates the lowest price field where true
 const setLowestPrice = async () => {
   await Beers.updateMany(
@@ -69,6 +81,19 @@ const setLowestPrice = async () => {
   )
 }
 
+const setHighestPrice = async beer => {
+  if (beer.currentPrice > beer.highestPrice) {
+    await Beers.findOneAndUpdate(
+      {
+        _id: beer.id
+      },
+      {
+        highestPrice: beer.currentPrice
+      }
+    )
+  }
+}
+
 // function to reset market prices to starting price
 const resetMarket = async () => {
   await Beers.updateMany(
@@ -76,7 +101,9 @@ const resetMarket = async () => {
     [
       {
         $set: {
-          currentPrice: '$startingPrice'
+          currentPrice: '$startingPrice',
+          lowestPrice: '$startingPrice',
+          highestPrice: '$startingPrice'
         }
       }
     ],
@@ -89,6 +116,8 @@ module.exports = {
   createBeer,
   decreasePrice,
   checkMinimum,
+  setCurrentPrice,
   setLowestPrice,
+  setHighestPrice,
   resetMarket
 }

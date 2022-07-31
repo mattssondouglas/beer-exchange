@@ -6,7 +6,8 @@ const updateBeers = async () => {
     .then(response => response.json())
     .then(beers => {
       beers.forEach((beer, i) => {
-        document.querySelectorAll('.price')[i].innerHTML = beer.currentPrice
+        document.querySelectorAll('.price')[i].innerHTML =
+          beer.currentPrice + '฿'
       })
     })
     .catch(err => {
