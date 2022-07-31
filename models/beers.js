@@ -22,5 +22,15 @@ module.exports = mongoose.model('beers', {
     required: true
   },
 
+  lowestPrice: {
+    type: Number,
+    required: true
+  },
+
+  highestPrice: {
+    type: Number,
+    required: true
+  },
+
   photo: String
 })
