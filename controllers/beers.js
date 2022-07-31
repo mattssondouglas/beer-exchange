@@ -23,7 +23,9 @@ router.post('/', async (req, res, next) => {
       photo: req.body.photo,
       startingPrice: req.body.startingPrice,
       minimumPrice: req.body.minimumPrice,
-      currentPrice: req.body.startingPrice
+      currentPrice: req.body.startingPrice,
+      lowestPrice: req.body.startingPrice,
+      highestPrice: req.body.startingPrice
     })
     res.redirect('/create')
   } catch (err) {
