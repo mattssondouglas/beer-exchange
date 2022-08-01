@@ -1,21 +1,26 @@
 
 
 <nav>
-	<div class="container p-3">
-		<div class="row">
-			<div class="col">
+	<div class="container text-center pt-2">
+		<div class="row row-cols-4">
+			<div class="col col-lg-2">
 				<a href="./create">
-					<button type="button" class="btn btn-outline-secondary">Create Beer</button>
+					<button type="button" class="btn btn-success">Create Beer</button>
 				</a>
 			</div>
-			<div class="col">
+			<div class="col col-lg-8">
+				<a href="./">
+					<img src="/images/beer_logo.png" alt="logo" class="logo">
+				</a>
+			</div>
+			<div class="col col-lg-1">
 				<form action="./beers/reset/?_method=PATCH" method="POST">
 					<button class="btn btn-primary">Reset prices</button>
 				</form>
 			</div>
-			<div class="col text-end">
+			<div class="col col-lg-1">
 				<form action="/beers/crash?_method=PATCH" method="POST">
-					<button type="submit" class="btn btn-outline-secondary">Market Crash</button>
+					<button type="submit" class="btn btn-danger">Market Crash</button>
 				</form>
 			</div>
 		</div>
@@ -29,7 +34,7 @@
 		{{#each beers as |beer|}}
 		<form class="beer" action="/orders" name="beer" method="post">
 			<div class="col mb-2">
-				<div class="card">
+				<div class="card m-3">
 					<input type="hidden" name="id" value="{{beer.id}}"/>
 					<button type="submit" onclick="orderBeer()">
 						<div class="card-img-top" style="background-image: url('{{beer.photo}}')"></div>

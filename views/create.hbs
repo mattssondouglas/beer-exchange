@@ -1,12 +1,12 @@
     <!-- Navbar -->
 
     <!-- Start> Form -->
-    <div class="container">
+    <div class="container bg-light rounded createForm">
       <form action="/beers" method="POST">
 				<a href="./">
 					<img src="/images/beer_logo.png" alt="logo" class="logo">
 				</a>
-        <h5>Add a new beer</h5>
+        <h5 class= "mt-5">Add a new beer</h5>
         <label class="form-label">Name</label>
         <input type="text" class="form-control" name='name'/>
 				<label class="form-label">Photo URL</label>
@@ -15,7 +15,7 @@
         <input type="number" class="form-control" name='startingPrice'></input>
         <label class="form-label">Minimum price</label>
         <input type="number" class="form-control" name='minimumPrice'/>
-        <button class="btn btn-success mt-2">Submit</button>
+        <button class="btn btn-success mt-2 mb-5">Submit</button>
       </form>
     </div>
     <!-- END Form -->

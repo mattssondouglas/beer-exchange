@@ -3,8 +3,12 @@ img {
   width: 100px;
 }
 
+.card {
+  opacity: 95%;
+}
+
 .card-img-top {
-  height: 200px;
+  height: 100px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -13,4 +17,18 @@ img {
 
 form.beer button {
   border: none;
+}
+
+.logo {
+  height: 10vh;
+}
+
+.createForm {
+  opacity: 95%;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1505075106905-fb052892c116?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60');
+  height: 100vh;
+  width: 100vw;
 }
