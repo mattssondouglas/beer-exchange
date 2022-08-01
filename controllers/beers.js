@@ -7,8 +7,11 @@ const dbMethods = require('../methods/dbMethods')
 
 //Requests
 // GET
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
   // res.render('create')
+  let beers = await Beers.find({})
+
+  res.json(beers)
 })
 
 // PATCH
@@ -17,14 +20,8 @@ router.get('/', (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     // set the current = start
-    let currentPrice = req.body.startingPrice
-    let beer = await Beers.create({
-      name: req.body.name,
-      photo: req.body.photo,
-      startingPrice: req.body.startingPrice,
-      minimumPrice: req.body.minimumPrice,
-      currentPrice: req.body.startingPrice
-    })
+    // let currentPrice = req.body.startingPrice
+    await dbMethods.createBeer(req.body)
     res.redirect('/create')
   } catch (err) {
     next(err)
@@ -35,23 +32,13 @@ router.post('/', async (req, res, next) => {
 router.patch('/decrease', async (req, res, next) => {
   try {
     // console.log('hello')
-    let items = await Beers.updateMany(
-      {},
-      [
-        {
-          $set: {
-            currentPrice: {
-              $round: [{ $multiply: ['$currentPrice', 0.98] }, 2]
-            }
-          }
-        }
-        // }
-      ],
-      { new: true }
-    )
-    console.log(items)
+
+    await dbMethods.decreasePrice()
+    await dbMethods.checkMinimum()
+    await dbMethods.setLowestPrice()
+
     let beers = await Beers.find({})
-    console.log(beers)
+    // console.log(beers)
     res.json(beers)
   } catch (err) {
     next(err)
@@ -82,17 +69,7 @@ router.patch('/crash', async (req, res, next) => {
 
 router.patch('/reset', async (req, res, next) => {
   try {
-    let items = await Beers.updateMany(
-      {},
-      [
-        {
-          $set: {
-            currentPrice: '$startingPrice'
-          }
-        }
-      ],
-      { new: true }
-    )
+    await dbMethods.resetMarket()
     let beers = await Beers.find({})
     res.render('beers', { beers })
   } catch (err) {
