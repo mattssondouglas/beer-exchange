@@ -12,10 +12,10 @@
 		{{#each beers as |beer|}}
     <tr>
       <th scope="row">{{beer.name}}</th>
-      <td>{{beer.currentPrice}}</td>
-      <td>find highest price per beer</td>
-      <td>find lowest price per beer</td>
-			<td>if current price is higher than starting price</td>
+      <td class="price">{{beer.currentPrice}}</td>
+      <td class="hprice">{{beer.highestPrice}}</td>
+      <td class="lprice">{{beer.lowestPrice}}</td>
+			<td>{{#if beer.currentPrice > beer.highestPrice ? "UP" : "DOWN"}}</td>{{/if}}
     </tr>
 		{{/each}}
   </tbody>

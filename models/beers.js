@@ -31,6 +31,10 @@ module.exports = mongoose.model('beers', {
     type: Number,
     required: true
   },
+  trending: {
+    type: Boolean,
+    default: true
+  },
 
   photo: String
 })
