@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
   await dbMethods.setCurrentPrice(beer, updatedPrice)
   // update the current price of the beers
 
-  res.redirect('/')
+  // res.redirect('/')
 })
 
 // Create GET controller

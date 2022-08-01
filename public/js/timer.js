@@ -15,6 +15,22 @@ const updateBeers = async () => {
     })
 }
 
+const orderBeer = async () => {
+  fetch('/beers', {
+    method: 'GET'
+  })
+    .then(response => response.json())
+    .then(beers => {
+      beers.forEach((beer, i) => {
+        document.querySelectorAll('.price')[i].innerHTML =
+          beer.currentPrice + '฿'
+      })
+    })
+    .catch(err => {
+      console.log('err', err)
+    })
+}
+
 updateBeers()
 //
 let decrease = setInterval(() => {

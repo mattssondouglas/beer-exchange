@@ -7,8 +7,11 @@ const dbMethods = require('../methods/dbMethods')
 
 //Requests
 // GET
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
   // res.render('create')
+  let beers = await Beers.find({})
+
+  res.json(beers)
 })
 
 // PATCH
