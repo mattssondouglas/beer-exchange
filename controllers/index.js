@@ -25,6 +25,14 @@ router.get('/create', (req, res, next) => {
   }
 })
 
+router.get('/chart', (req, res, next) => {
+  try {
+    res.render('chart')
+  } catch (err) {
+    throw err
+  }
+})
+
 // Create PATCH controller
 
 // Create DELETE controller
