@@ -19,3 +19,5 @@ const config = {
 }
 
 const myChart = new Chart(document.getElementById('myChart'), config)
+
+// make route (which one?) res.json instead of rendering some page
