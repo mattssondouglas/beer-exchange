@@ -23,6 +23,10 @@ form.beer button {
   height: 10vh;
 }
 
+.navBeers {
+  opacity: 95%;
+}
+
 .table {
   height: 100vh;
 }
