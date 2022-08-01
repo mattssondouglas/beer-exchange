@@ -23,6 +23,10 @@ form.beer button {
   height: 10vh;
 }
 
+.table {
+  height: 100vh;
+}
+
 .createForm {
   opacity: 95%;
 }
