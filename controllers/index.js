@@ -17,6 +17,14 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.get('/create', (req, res, next) => {
+  try {
+    res.render('create')
+  } catch (err) {
+    throw err
+  }
+})
+
 // Create PATCH controller
 
 // Create DELETE controller
