@@ -15,9 +15,7 @@ module.exports = mongoose.model('history', {
         type: ObjectId,
         ref: 'beers'
       },
-      currentPrice: Number,
-      lowestPrice: Number,
-      highestPrice: Number
+      currentPrice: Number
     }
   ]
 })
