@@ -1,3 +1,13 @@
+// Fetch
+const getChartData = async () => {
+  const url = '/chartdata'
+  const response = await fetch(url)
+  const datapoints = await response.json()
+  console.log(datapoints)
+  return datapoints
+}
+getChartData()
+
 const labels = ['Hour 1', 'Hour 2', 'Hour 3', 'Hour 4', 'Hour 5', 'Hour 6']
 
 const data = {

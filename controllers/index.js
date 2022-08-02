@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const Beers = require('../models/beers')
+const History = require('../models/history')
 
 // Create POST controller
 
@@ -25,7 +26,7 @@ router.get('/create', (req, res, next) => {
   }
 })
 
-router.get('/chart', (req, res, next) => {
+router.get('/chart', async (req, res, next) => {
   try {
     res.render('chart')
   } catch (err) {
@@ -33,6 +34,15 @@ router.get('/chart', (req, res, next) => {
   }
 })
 
+router.get('/chartdata', async (req, res, next) => {
+  try {
+    let latestHistory = await History.find({})
+    // getChartData()
+    res.json(latestHistory)
+  } catch (err) {
+    throw err
+  }
+})
 // Create PATCH controller
 
 // Create DELETE controller
