@@ -31,7 +31,7 @@ router.post('/', async (req, res, next) => {
 // Create PATCH controller
 router.patch('/decrease', async (req, res, next) => {
   try {
-    // console.log('hello')
+    // console.log('patch decrease')
 
     await dbMethods.setPriceOnDecrease()
     // await dbMethods.decreasePrice()
@@ -48,7 +48,7 @@ router.patch('/decrease', async (req, res, next) => {
 
 router.patch('/crash', async (req, res, next) => {
   try {
-    console.log('Starting crash')
+    // console.log('Starting crash')
     // retrieve all Beers
     let allBeers = await Beers.find({})
 

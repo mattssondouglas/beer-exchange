@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Beers = require('../models/beers')
+const Settings = require('../models/settings')
 
 const createBeer = async beer => {
   await Beers.create({
@@ -14,39 +15,63 @@ const createBeer = async beer => {
   })
 }
 
+const getSettings = async () => {
+  let mySettings = await Settings.findOne({})
+  return mySettings
+}
+
 const setPriceOnDecrease = async () => {
-  await Beers.updateMany(
-    {},
-    [
-      {
-        $set: {
-          currentPrice: {
-            $cond: {
-              if: {
-                $gt: [
-                  '$minimumPrice',
-                  { $round: [{ $multiply: ['$currentPrice', 0.98] }, 2] }
-                ]
-              },
-              then: '$minimumPrice',
-              else: { $round: [{ $multiply: ['$currentPrice', 0.98] }, 2] }
-            }
-          },
-          lowestPrice: {
-            $cond: {
-              if: {
-                $gt: ['$lowestPrice', '$currentPrice']
-              },
-              then: '$currentPrice',
-              else: '$lowestPrice'
+  try {
+    let mySettings = await getSettings()
+    let priceDrop = (100 - mySettings.priceDrop) / 100
+    // console.log('start query')
+    let a = await Beers.updateMany(
+      {},
+      [
+        {
+          $set: {
+            currentPrice: {
+              $cond: {
+                if: {
+                  $gt: [
+                    '$minimumPrice',
+                    {
+                      // $round: [{ $multiply: ['$currentPrice', 0.98] }, 2]
+                      $round: [{ $multiply: ['$currentPrice', +priceDrop] }, 2]
+                    }
+                  ]
+                },
+                then: '$minimumPrice',
+                else: {
+                  // $round: [{ $multiply: ['$currentPrice', 0.98] }, 2]
+                  $round: [{ $multiply: ['$currentPrice', +priceDrop] }, 2]
+                }
+              }
+            },
+            lowestPrice: {
+              $cond: {
+                if: {
+                  $gt: ['$lowestPrice', '$currentPrice']
+                },
+                then: '$currentPrice',
+                else: '$lowestPrice'
+              }
             }
           }
         }
-      }
-      // }
-    ],
-    { new: true }
-  )
+        // }
+      ],
+      { new: true }
+    )
+    // console.log(a)
+    // console.log('finished query')
+  } catch (err) {
+    // console.log('catching error')
+    // console.log(err)
+    next(err)
+  }
+
+  return
 }
 
 // const decreasePrice = async () => {
@@ -95,6 +120,7 @@ const setCurrentPrice = async (beer, updatedPrice) => {
       currentPrice: updatedPrice
     }
   )
+  return
 }
 
 // checks if the current price of each beer is lower than the lowest price and updates the lowest price field where true
@@ -127,6 +153,7 @@ const setHighestPrice = async beer => {
       }
     )
   }
+  return
 }
 
 // function to reset market prices to starting price
@@ -144,6 +171,7 @@ const resetMarket = async () => {
     ],
     { new: true }
   )
+  return
 }
 
 // Export module
@@ -155,5 +183,6 @@ module.exports = {
   setCurrentPrice,
   // setLowestPrice,
   setHighestPrice,
-  resetMarket
+  resetMarket,
+  getSettings
 }
