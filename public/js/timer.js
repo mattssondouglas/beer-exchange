@@ -28,6 +28,11 @@ const updateTicker = async () => {
           beer.lowestPrice + '฿'
         document.querySelectorAll('.hprice')[i].innerHTML =
           beer.highestPrice + '฿'
+        if (beer.trending) {
+          document.querySelectorAll('.trend')[i].innerHTML = 'UP'
+        } else {
+          document.querySelectorAll('.trend')[i].innerHTML = 'DOWN'
+        }
       })
     })
     .catch(err => {
@@ -67,7 +72,7 @@ let ticker = setInterval(() => {
 
 let decrease = setInterval(() => {
   updateBeers()
-}, 5 * 1000)
+}, 2 * 1000)
 
 // Stop after 60 seconds
 

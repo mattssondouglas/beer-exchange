@@ -10,7 +10,7 @@ const dbMethods = require('../methods/dbMethods')
 router.get('/', async (req, res, next) => {
   // res.render('create')
   let beers = await Beers.find({})
-
+  calcMethods.setTrend(beers)
   res.json(beers)
 })
 
@@ -33,9 +33,10 @@ router.patch('/decrease', async (req, res, next) => {
   try {
     // console.log('hello')
 
-    await dbMethods.decreasePrice()
-    await dbMethods.checkMinimum()
-    await dbMethods.setLowestPrice()
+    await dbMethods.setPriceOnDecrease()
+    // await dbMethods.decreasePrice()
+    // await dbMethods.checkMinimum()
+    //await dbMethods.setLowestPrice()
 
     let beers = await Beers.find({})
     // console.log(beers)

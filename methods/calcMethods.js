@@ -15,5 +15,16 @@ const marketCrash = beer => {
   return beer.currentPrice
 }
 
+const setTrend = beers => {
+  let mybeers = beers.map((beer, i) => {
+    if (beer.currentPrice > beer.startingPrice) {
+      beer.trending = true
+    } else {
+      beer.trending = false
+    }
+    return beer
+  })
+  return mybeers
+}
 // Export module
-module.exports = { marketCrash, priceDrop }
+module.exports = { marketCrash, priceDrop, setTrend }
