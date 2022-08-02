@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const Beers = require('../models/beers')
+const History = require('../models/history')
 const calcMethods = require('../methods/calcMethods')
 const dbMethods = require('../methods/dbMethods')
 
@@ -38,8 +39,15 @@ router.patch('/decrease', async (req, res, next) => {
     // await dbMethods.checkMinimum()
     //await dbMethods.setLowestPrice()
 
-    let beers = await Beers.find({})
-    // console.log(beers)
+    let beers = await Beers.find({}).lean()
+    beers = beers.map(beer => {
+      beer.beerId = beer._id
+      return beer
+    })
+    console.log(beers)
+    let history = await History.create({
+      beers
+    })
     res.json(beers)
   } catch (err) {
     next(err)
