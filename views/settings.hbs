@@ -1,0 +1,50 @@
+<!-- Start> Form -->
+<div class="container bg-light rounded createForm">
+
+
+	<form action="/settings?_method=PATCH" method="POST">
+		<a href="./">
+			<img src="/images/beer_logo.png" alt="logo" class="logo">
+		</a> <h1>Settings</h1>
+		<h5 class= "mt-5">Beer Price settings</h5>
+		<label class="form-label">Percentage Price drop</label>
+		<div class="input-group mb-3">
+      <input type="number" class="form-control" aria-describedby="basic-addon3"	name="priceDrop" value="{{mySettings.priceDrop}}"/>
+			<small>A beer that costs 70฿ will drop in price in the following increments </small>
+		</div>
+	<label class="form-label">Percentage price increase</label>
+		<div class="input-group mb-3">
+      <input type="number" class="form-control" aria-describedby="basic-addon3"	name="priceIncrease" value="{{mySettings.priceIncrease}}"/>
+			<small>A beer that costs 70฿ will increase in price in the following increments </small>
+    </div>
+		<label class="form-label">Price Change Interval</label>
+		<div class="input-group mb-3">
+      <input type="number" class="form-control" aria-describedby="basic-addon3"	name="priceDropInterval" value="{{mySettings.priceDropInterval}}"/>
+			<small>Determines how often the market changes in seconds </small>
+    </div>
+
+		<h5 class= "mt-5">Market crash settings</h5>
+		<label class="form-label">Market Crash Active</label>
+		<div class="input-group mb-3">
+      <input type="checkbox" name="active" checked="{{mySettings.marketCrash.active}}" readonly/>
+			<small class="form-label">determines if there is an active market crash </small>
+    </div>
+		<label class="form-label">Trending beers price drop</label>
+		<div class="input-group mb-3">
+      <input type="number" class="form-control" aria-describedby="basic-addon3"	name="priceIncrease" value="{{mySettings.marketCrash.[0].upTrendDiscount}}"/>
+			<small>What Percentage should trending beers drop by during a market crash </small>
+    </div>
+		<label class="form-label">Down trend price drop</label>
+		<div class="input-group mb-3">
+      <input type="number" class="form-control" aria-describedby="basic-addon3"	name="priceDropInterval" value="{{mySettings.marketCrash.[0].downTrendDiscount}}"/>
+			<small>Enter the percentage above the minimum price to sell beers that are not trending </small>
+    </div>
+		<label class="form-label">Market crash duration</label>
+		<div class="input-group mb-3">
+      <input type="number" class="form-control" aria-describedby="basic-addon3"	name="priceDropInterval" value="{{mySettings.marketCrash.[0].duration}}"/>
+			<small>Enter in minutes the duration of a market crash </small>
+    </div>
+		<button class="btn btn-success mt-2 mb-5">Submit</button>
+	</form>
+</div>
+<!-- END Form -->

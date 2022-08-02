@@ -50,6 +50,7 @@ app.use('/beers', require('./controllers/beers.js'))
 app.use('/orders', require('./controllers/orders.js'))
 app.use('/ticker', require('./controllers/ticker.js'))
 app.use('/beers', require('./controllers/beers.js'))
+app.use('/settings', require('./controllers/settings.js'))
 
 // ::::
 

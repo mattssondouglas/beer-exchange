@@ -18,6 +18,8 @@ router.post('/', async (req, res) => {
   let order = await Orders.create(tempOrder)
 
   let updatedPrice = (beer.currentPrice * 1.02).toFixed(2)
+
+  // await dbMethods.setPriceOnOrder(beer, updatedPrice)
   await dbMethods.setHighestPrice(beer)
   await dbMethods.setCurrentPrice(beer, updatedPrice)
   // update the current price of the beers

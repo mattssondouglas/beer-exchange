@@ -10,7 +10,7 @@ const dbMethods = require('../methods/dbMethods')
 router.get('/', async (req, res, next) => {
   // res.render('create')
   let beers = await Beers.find({})
-
+  calcMethods.setTrend(beers)
   res.json(beers)
 })
 
@@ -31,11 +31,12 @@ router.post('/', async (req, res, next) => {
 // Create PATCH controller
 router.patch('/decrease', async (req, res, next) => {
   try {
-    // console.log('hello')
+    // console.log('patch decrease')
 
-    await dbMethods.decreasePrice()
-    await dbMethods.checkMinimum()
-    await dbMethods.setLowestPrice()
+    await dbMethods.setPriceOnDecrease()
+    // await dbMethods.decreasePrice()
+    // await dbMethods.checkMinimum()
+    //await dbMethods.setLowestPrice()
 
     let beers = await Beers.find({})
     // console.log(beers)
@@ -47,7 +48,7 @@ router.patch('/decrease', async (req, res, next) => {
 
 router.patch('/crash', async (req, res, next) => {
   try {
-    console.log('Starting crash')
+    // console.log('Starting crash')
     // retrieve all Beers
     let allBeers = await Beers.find({})
 

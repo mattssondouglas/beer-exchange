@@ -28,6 +28,11 @@ const updateTicker = async () => {
           beer.lowestPrice + '฿'
         document.querySelectorAll('.hprice')[i].innerHTML =
           beer.highestPrice + '฿'
+        if (beer.trending) {
+          document.querySelectorAll('.trend')[i].innerHTML = 'UP'
+        } else {
+          document.querySelectorAll('.trend')[i].innerHTML = 'DOWN'
+        }
       })
     })
     .catch(err => {
@@ -44,10 +49,6 @@ const orderBeer = async () => {
       beers.forEach((beer, i) => {
         document.querySelectorAll('.price')[i].innerHTML =
           beer.currentPrice + '฿'
-        // document.querySelectorAll('.lprice')[i].innerHTML =
-        //   beer.lowestPrice + '฿'
-        // document.querySelectorAll('.hprice')[i].innerHTML =
-        //   beer.highestPrice + '฿'
       })
     })
     .catch(err => {
@@ -63,11 +64,13 @@ let ticker = setInterval(() => {
   if (window.location.href.includes('ticker')) {
     updateTicker()
   }
-}, 1 * 1000)
+}, 10 * 1000)
+
+let num = 5
 
 let decrease = setInterval(() => {
   updateBeers()
-}, 5 * 1000)
+}, num * 1000)
 
 // Stop after 60 seconds
 
