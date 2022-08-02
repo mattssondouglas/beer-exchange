@@ -11,7 +11,7 @@ module.exports = mongoose.model('history', {
   },
   beers: [
     {
-      beer: {
+      beerId: {
         type: ObjectId,
         ref: 'beers'
       },
