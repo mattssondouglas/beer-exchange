@@ -1,16 +1,21 @@
 const express = require('express')
 const router = express.Router()
+const dbMethods = require('../methods/dbMethods')
 
 const priceDrop = beer => {
   beer.currentPrice = (beer.currentPrice * 0.98).toFixed(2)
   return beer.currentPrice
 }
 
-const marketCrash = beer => {
+const marketCrash = async beer => {
+  let mySettings = await dbMethods.getSettings()
+  let discount = (100 - mySettings.upTrendDiscount) / 100
+  let aboveMin = mySettings.downTrendDiscount / 100 + 1
+
   if (beer.currentPrice > beer.startingPrice) {
-    beer.currentPrice = (beer.currentPrice * 0.5).toFixed(2)
+    beer.currentPrice = (beer.currentPrice * discount).toFixed(2)
   } else if (beer.currentPrice <= beer.startingPrice) {
-    beer.currentPrice = (beer.minimumPrice * 1).toFixed(2)
+    beer.currentPrice = (beer.minimumPrice * aboveMin).toFixed(2)
   }
   return beer.currentPrice
 }

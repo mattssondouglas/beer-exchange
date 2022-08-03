@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const Beers = require('../models/beers')
+const Settings = require('../models/settings')
 const calcMethods = require('../methods/calcMethods')
 const dbMethods = require('../methods/dbMethods')
 
