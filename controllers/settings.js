@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
   try {
     // console.log('hi settings')
     let mySettings = await Settings.findOne({}).lean()
-    console.log('type of ' + typeof mySettings.priceDrop)
+    // console.log('type of ' + typeof mySettings.priceDrop)
     // console.log(mySettings.marketCrash[0].active)
     res.render('./settings', { mySettings })
   } catch (err) {
@@ -30,7 +30,7 @@ router.get('/create', (req, res, next) => {
 router.patch('/', async (req, res, next) => {
   try {
     // console.log('Hello Patch')
-    console.log('body is', req.body)
+    // console.log('body is', req.body)
     let mySettings = await Settings.findOneAndUpdate(
       {},
       {

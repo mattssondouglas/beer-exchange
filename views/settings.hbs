@@ -49,13 +49,13 @@
 		<h5 class= "mt-5">Beer Price settings</h5>
 		<label class="form-label">Percentage Price drop</label>
 		<div class="input-group mb-3">
-      <input type="number" step="any" min="0.1" max="100" class="form-control" name="priceDrop" value="{{mySettings.priceDrop}}"/>
-			<small>A beer that costs 70฿ will drop in price in the following increments </small>
+      <input type="number" step="any" min="0.1" max="100" class="form-control" onkeyup="pricedrop(value)" name="priceDrop" value="{{mySettings.priceDrop}}"/>
+			<small class="pricedrop">A beer that costs 70฿ will drop in price in the following increments </small>
 		</div>
 	<label class="form-label">Percentage price increase</label>
 		<div class="input-group mb-3">
-      <input type="number" step="any" min="0.1" max="100" class="form-control" name="priceIncrease" value="{{mySettings.priceIncrease}}"/>
-			<small>A beer that costs 70฿ will increase in price in the following increments </small>
+      <input type="number" step="any" min="0.1" max="100" class="form-control" onkeyup="priceincrease(value)" name="priceIncrease" value="{{mySettings.priceIncrease}}"/>
+			<small class="priceincrease">A beer that costs 70฿ will increase in price in the following increments </small>
     </div>
 		<label class="form-label">TBC: Price Change Interval</label>
 		<div class="input-group mb-3">
@@ -73,13 +73,13 @@
     </div>
 		<label class="form-label">Trending beers price drop</label>
 		<div class="input-group mb-3">
-      <input type="number" step="any" min="0.1" max="100"  class="form-control" name="upTrendDiscount" value="{{mySettings.upTrendDiscount}}"/>
-			<small>What Percentage should trending beers drop by during a market crash </small>
+      <input type="number" step="any" min="0.1" max="100"  class="form-control" onkeyup="uptrend(value)" name="upTrendDiscount" value="{{mySettings.upTrendDiscount}}"/>
+			<small class="uptrend">What Percentage should trending beers drop by during a market crash </small>
     </div>
 		<label class="form-label">Down trend price drop</label>
 		<div class="input-group mb-3">
-      <input type="number" step="any" min="0.1" max="100"  class="form-control" name="downTrendDiscount" value="{{mySettings.downTrendDiscount}}"/>
-			<small>Enter the percentage above the minimum price to sell beers that are not trending </small>
+      <input type="number" step="any" min="0" max="100"  class="form-control" onkeyup="downtrend(value)" name="downTrendDiscount" value="{{mySettings.downTrendDiscount}}"/>
+			<small class="downtrend">Enter the percentage above the minimum price to sell beers that are not trending </small>
     </div>
 		<label class="form-label">Market crash duration</label>
 		<div class="input-group mb-3">
