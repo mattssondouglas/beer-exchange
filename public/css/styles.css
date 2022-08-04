@@ -1,7 +1,7 @@
-img {
+/* img {
   height: 200px;
   width: 100px;
-}
+} */
 
 .card {
   opacity: 95%;
@@ -20,7 +20,9 @@ form.beer button {
 }
 
 .logo {
-  height: 10vh;
+  border: 1px solid gray;
+  border-radius: 20%;
+  width: 85px;
 }
 
 .navBeers {
@@ -36,7 +38,41 @@ form.beer button {
 }
 
 body {
-  /* background-image: url('https://images.unsplash.com/photo-1505075106905-fb052892c116?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60'); */
+  background-image: url('https://images.unsplash.com/photo-1505075106905-fb052892c116?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60');
   height: 100vh;
   width: 100vw;
+}
+.frm {
+  background-color: rgb(255, 250, 250);
+  opacity: 90%;
+}
+.input-group {
+  margin-right: 7px;
+}
+.foot {
+  height: 10%;
+  align-items: flex-start;
+  color: white;
+}
+.top {
+  opacity: 80%;
+  border: 1px solid gold;
+}
+.top:hover {
+  transform: scale(1.05);
+  background-color: gold;
+}
+/* Home page */
+/* alert */
+.alert {
+  background-color: red;
+  color: white;
+  opacity: 80%;
+  border: none;
+}
+.container {
+  padding: 0;
+}
+input {
+  margin-right: 7px;
 }

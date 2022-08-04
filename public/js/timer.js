@@ -35,9 +35,7 @@ const updateTicker = async () => {
         }
       })
     })
-    .catch(err => {
-      console.log('err', err)
-    })
+    .catch(err => {})
 }
 
 const orderBeer = async () => {

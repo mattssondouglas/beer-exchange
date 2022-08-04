@@ -76,41 +76,40 @@ router.get('/chartdata', async (req, res, next) => {
 
     console.log(beerPrices)
 
-		let data = {
-	    labels: labels,
-	    datasets: latestHistory[0].beers.map(beer => {
-				return {
-					label: beer.beerId.name,
-					backgroundColor: 'rgb(255, 99, 132)',
-					borderColor: 'rgb(255, 99, 132)',
-					data:
-				}
-			})
+    // let data = {
+    //   labels: labels,
+    //   datasets: latestHistory[0].beers.map(beer => {
+    // 		return {
+    // 			label: beer.beerId.name,
+    // 			backgroundColor: 'rgb(255, 99, 132)',
+    // 			borderColor: 'rgb(255, 99, 132)',
+    // 			data:
+    // 		}
+    // 	})
 
-					// data: [
-					// 	beer.currentPrice[0],
-					// 	beer.currentPrice[1],
-					// 	beer.currentPrice[2],
-					// 	2,
-					// 	20,
-					// 	30,
-					// 	45
-					// ]
+    // data: [
+    // 	beer.currentPrice[0],
+    // 	beer.currentPrice[1],
+    // 	beer.currentPrice[2],
+    // 	2,
+    // 	20,
+    // 	30,
+    // 	45
+    // ]
 
-
-		// let data = {
-		//   labels: histories.map(h => h.timestamp),
-		//   datasets: histories[0].beers.map(beer => {
-		//     return {
-		//       label: beer.beerId.name,
-		//       data: 'o'
-		//     }
-		//   })
-		// }
+    // let data = {
+    //   labels: histories.map(h => h.timestamp),
+    //   datasets: histories[0].beers.map(beer => {
+    //     return {
+    //       label: beer.beerId.name,
+    //       data: 'o'
+    //     }
+    //   })
+    // }
     let everything = {
       labels,
       beers,
-      beerNames,
+      beerNames
     }
 
     // one loop with four accumulators where current variables are accumulators.

@@ -1,23 +1,24 @@
+<!-- nav -->
 
+<div class="container-fluid px-5">
+  <div class="row align-items-center">
+    <div class="col">
+			<a href="/">
+				<img src="/images/beer_logo.png" alt="logo" class="logo">
+			</a>
+    </div>
+    <div class="col text-end">
+			<a href="./settings">
+				<button type="button" class="btn top btn-light">Settings</button>
+			</a>
+    </div>
+  </div>
+</div>
 
-<nav>
-	<div class="container text-center pt-2">
-		<div class="row row-cols-4 navBeers">
-			<div class="col col-lg-2">
-				<a href="./settings">
-					<button type="button" class="btn btn-success">Settings</button>
-				</a>
-			</div>
-			<div class="col col-lg-8">
-				<a href="/">
-					<img src="/images/beer_logo.png" alt="logo" class="logo">
-				</a>
-			</div>
-		</div>
-	</div>
-</nav>
 {{#if crashActive}}
-<h1>Market is Crashing</h1>
+<div class="alert alert-danger m-2" role="alert">
+  Market Crash!
+</div>
 {{/if}}
 <!-- buttons for beers -->
 <div class="Beers item-center p-2">
