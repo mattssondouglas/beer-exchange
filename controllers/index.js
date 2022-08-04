@@ -44,22 +44,18 @@ router.get('/chart', async (req, res, next) => {
 
 router.get('/chartdata', async (req, res, next) => {
   try {
-    let latestHistory = await History.find({}).populate({
-      path: 'beers.beerId',
-      select: 'name'
-    })
+    let latestHistory = await History.find({})
+      .sort('timestamp')
+      .populate({
+        path: 'beers.beerId',
+        select: 'name'
+      })
 
-    // const labels = latestHistory.map(history => history.timestamp)
-    //
-    // let beers = latestHistory.map(history => history.beers.map(beer => beer))
-    //
-    // let beerNames = latestHistory.map(history =>
-    //   history.beers.map(beer => beer.beerId.name)
-    // )
-    //
-    // let beerPrices = latestHistory.map(history =>
-    //   history.beers.map(beer => beer.currentPrice)
-    // )
+    latestHistory = latestHistory.splice(
+      latestHistory.length - 100,
+      latestHistory.length - 1
+    )
+
     const labels = []
 
     let beers = []
@@ -74,49 +70,52 @@ router.get('/chartdata', async (req, res, next) => {
       })
     })
 
-    console.log(beerPrices)
+    let colors = [
+      '#e6194b',
+      '#3cb44b',
+      '#ffe119',
+      '#4363d8',
+      '#f58231',
+      '#911eb4',
+      '#46f0f0',
+      '#f032e6',
+      '#bcf60c',
+      '#fabebe',
+      '#008080',
+      '#e6beff',
+      '#9a6324',
+      '#fffac8',
+      '#800000',
+      '#aaffc3',
+      '#808000',
+      '#ffd8b1',
+      '#000075',
+      '#808080',
+      '#ffffff',
+      '#000000'
+    ]
 
-		let data = {
-	    labels: labels,
-	    datasets: latestHistory[0].beers.map(beer => {
-				return {
-					label: beer.beerId.name,
-					backgroundColor: 'rgb(255, 99, 132)',
-					borderColor: 'rgb(255, 99, 132)',
-					data:
-				}
-			})
-
-					// data: [
-					// 	beer.currentPrice[0],
-					// 	beer.currentPrice[1],
-					// 	beer.currentPrice[2],
-					// 	2,
-					// 	20,
-					// 	30,
-					// 	45
-					// ]
-
-
-		// let data = {
-		//   labels: histories.map(h => h.timestamp),
-		//   datasets: histories[0].beers.map(beer => {
-		//     return {
-		//       label: beer.beerId.name,
-		//       data: 'o'
-		//     }
-		//   })
-		// }
-    let everything = {
-      labels,
-      beers,
-      beerNames,
+    let data = {
+      labels: labels,
+      datasets: latestHistory[0].beers.map((beer, beerindex) => {
+        return {
+          label: beer.beerId.name,
+          backgroundColor: colors[beerindex],
+          borderColor: colors[beerindex],
+          data: latestHistory.map(history => {
+            return history.beers[beerindex].currentPrice
+          })
+        }
+      })
     }
 
-    // one loop with four accumulators where current variables are accumulators.
+    console.log(
+      latestHistory.map(history => {
+        return history
+      })
+    )
 
-    // getChartData()
-    res.json(everything)
+    res.json(data)
   } catch (err) {
     throw err
   }
