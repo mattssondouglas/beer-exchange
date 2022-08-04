@@ -31,6 +31,9 @@ module.exports = mongoose.model('beers', {
     type: Number,
     required: true
   },
+  backupPrice: {
+    type: Number
+  },
   trending: {
     type: Boolean,
     default: true

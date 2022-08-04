@@ -123,14 +123,14 @@ const setCurrentPrice = async (beer, updatedPrice) => {
   return
 }
 
-const checkMarketCrash = async () => {
+const checkCrashStatus = async () => {
   let crashActive = false
   let settings = await Settings.findOne({})
 
   if (settings.crashActive) {
     crashActive = true
   }
-  console.log('crash is currently ' + crashActive)
+  // console.log('checkCrashStatus: crash is currently ' + crashActive)
   return crashActive
 }
 // checks if the current price of each beer is lower than the lowest price and updates the lowest price field where true
@@ -184,6 +184,49 @@ const resetMarket = async () => {
   return
 }
 
+const toggleCrash = async crash => {
+  // console.log('TOGGLECRASH: crash status is: ', crash)
+
+  crash = await Settings.findOneAndUpdate(
+    {},
+    { crashActive: !crash },
+    { new: true }
+  )
+  // console.log('crash changed to : ', crash.crashActive)
+
+  return
+}
+
+const crashPricesUpdate = async crash => {
+  if (crash) {
+    console.log('restoring prices')
+    await Beers.updateMany(
+      {},
+      [
+        {
+          $set: {
+            currentPrice: '$backupPrice'
+          }
+        }
+      ],
+      { new: true }
+    )
+  } else {
+    console.log('backup prices')
+    await Beers.updateMany(
+      {},
+      [
+        {
+          $set: {
+            backupPrice: '$currentPrice'
+          }
+        }
+      ],
+      { new: true }
+    )
+  }
+}
+
 // Export module
 module.exports = {
   setPriceOnDecrease,
@@ -195,5 +238,7 @@ module.exports = {
   setHighestPrice,
   resetMarket,
   getSettings,
-  checkMarketCrash
+  checkCrashStatus,
+  toggleCrash,
+  crashPricesUpdate
 }

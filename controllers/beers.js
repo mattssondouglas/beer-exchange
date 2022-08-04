@@ -34,8 +34,11 @@ router.post('/', async (req, res, next) => {
 router.patch('/decrease', async (req, res, next) => {
   try {
     // console.log('patch decrease')
-
-    await dbMethods.setPriceOnDecrease()
+    let mySettings = await dbMethods.getSettings()
+    if (!mySettings.crashActive) {
+      console.log('DECREASE: prices dropping')
+      await dbMethods.setPriceOnDecrease()
+    }
     // await dbMethods.decreasePrice()
     // await dbMethods.checkMinimum()
     //await dbMethods.setLowestPrice()
@@ -45,7 +48,7 @@ router.patch('/decrease', async (req, res, next) => {
       beer.beerId = beer._id
       return beer
     })
-    console.log(beers)
+    // console.log(beers)
     let history = await History.create({
       beers
     })
@@ -59,22 +62,32 @@ router.patch('/crash', async (req, res, next) => {
   try {
     // console.log('Starting crash')
     // retrieve all Beers
+    let mySettings = await dbMethods.getSettings()
     let allBeers = await Beers.find({})
-    console.log('this is all the beers', allBeers)
-    await Promise.all(
-      allBeers.map(async beer => {
-        beer.currentPrice = await calcMethods.marketCrash(beer)
-        return beer
-      })
-    )
-    allBeers.forEach(async beer => {
-      beer.save()
-    })
+    // console.log('this is all the beers', allBeers)
 
-    res.redirect('/')
+    if (mySettings.crashActive) {
+      dbMethods.toggleCrash(mySettings.crashActive)
+      console.log('restore prices')
+      await dbMethods.crashPricesUpdate(mySettings.crashActive)
+    } else {
+      console.log('backup prices')
+      await dbMethods.crashPricesUpdate(mySettings.crashActive)
+      await Promise.all(
+        allBeers.map(async beer => {
+          beer.currentPrice = await calcMethods.marketCrash(beer)
+          return beer
+        })
+      )
+      allBeers.forEach(async beer => {
+        beer.save()
+      })
+      dbMethods.toggleCrash(mySettings.crashActive)
+    }
   } catch (err) {
     next(err)
   }
+  res.redirect('/')
 })
 
 router.patch('/reset', async (req, res, next) => {
