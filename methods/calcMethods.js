@@ -8,16 +8,24 @@ const priceDrop = beer => {
 }
 
 const marketCrash = async beer => {
-  let mySettings = await dbMethods.getSettings()
-  let discount = (100 - mySettings.upTrendDiscount) / 100
-  let aboveMin = mySettings.downTrendDiscount / 100 + 1
-
-  if (beer.currentPrice > beer.startingPrice) {
-    beer.currentPrice = (beer.currentPrice * discount).toFixed(2)
-  } else if (beer.currentPrice <= beer.startingPrice) {
-    beer.currentPrice = (beer.minimumPrice * aboveMin).toFixed(2)
+  try {
+    // console.log('starting crash')
+    let mySettings = await dbMethods.getSettings()
+    // console.log('my settings are', mySettings)
+    let discount = (100 - mySettings.upTrendDiscount) / 100
+    // console.log('my uptrend value is', mySettings.upTrendDiscount)
+    console.log('my discount is', discount)
+    let aboveMin = mySettings.downTrendDiscount / 100 + 1
+    // console.log('result for above min is', aboveMin)
+    if (beer.currentPrice > beer.startingPrice) {
+      beer.currentPrice = (beer.currentPrice * discount).toFixed(2)
+    } else if (beer.currentPrice <= beer.startingPrice) {
+      beer.currentPrice = (beer.minimumPrice * aboveMin).toFixed(2)
+    }
+    return beer.currentPrice
+  } catch (err) {
+    console.log('this is the error', err)
   }
-  return beer.currentPrice
 }
 
 const setTrend = beers => {
