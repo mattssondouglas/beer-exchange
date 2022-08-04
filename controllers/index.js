@@ -36,7 +36,8 @@ router.get('/create', (req, res, next) => {
 
 router.get('/chart', async (req, res, next) => {
   try {
-    res.render('chart')
+    let beers = await Beers.find({})
+    res.render('chart', { beers })
   } catch (err) {
     throw err
   }
@@ -52,7 +53,7 @@ router.get('/chartdata', async (req, res, next) => {
       })
 
     latestHistory = latestHistory.splice(
-      latestHistory.length - 100,
+      latestHistory.length - 60,
       latestHistory.length - 1
     )
 
