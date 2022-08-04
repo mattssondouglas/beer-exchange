@@ -2,7 +2,9 @@
 const express = require('express')
 const router = express.Router()
 const Beers = require('../models/beers')
+const Settings = require('../models/settings')
 const History = require('../models/history')
+const dbMethods = require('../methods/dbMethods')
 
 // Create POST controller
 
@@ -10,9 +12,15 @@ const History = require('../models/history')
 router.get('/', async (req, res) => {
   try {
     let beers = await Beers.find({})
-
+    // let mySettings = false
+    // let settings = await Settings.findOne({})
+    //
+    // if (settings.marketCrash[0].active) {
+    //   mySettings = true
+    // }
+    let crashActive = dbMethods.checkMarketCrash()
     // console.log(beers)
-    res.render('beers', { beers })
+    res.render('beers', { beers, crashActive })
   } catch (err) {
     throw err
   }

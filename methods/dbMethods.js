@@ -123,6 +123,16 @@ const setCurrentPrice = async (beer, updatedPrice) => {
   return
 }
 
+const checkMarketCrash = async () => {
+  let crashActive = false
+  let settings = await Settings.findOne({})
+
+  if (settings.crashActive) {
+    crashActive = true
+  }
+  console.log('crash is currently ' + crashActive)
+  return crashActive
+}
 // checks if the current price of each beer is lower than the lowest price and updates the lowest price field where true
 // const setLowestPrice = async () => {
 //   await Beers.updateMany(
@@ -184,5 +194,6 @@ module.exports = {
   // setLowestPrice,
   setHighestPrice,
   resetMarket,
-  getSettings
+  getSettings,
+  checkMarketCrash
 }

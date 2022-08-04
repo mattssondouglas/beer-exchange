@@ -56,8 +56,18 @@ const orderBeer = async () => {
     })
 }
 
-console.log('location is ' + window.location.href.includes('ticker'))
-updateBeers()
+const getSettings = async () => {
+  fetch('/settings', {
+    method: 'GET'
+  }).then(response => response.json())
+  return settings
+}
+let mySettings = 23
+mySettings = getSettings()
+console.log('settings are: ' + mySettings)
+
+// console.log('location is ' + window.location.href.includes('ticker'))
+// updateBeers()
 // updateTicker()
 //
 let ticker = setInterval(() => {

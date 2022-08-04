@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const Beers = require('../models/beers')
+const Settings = require('../models/settings')
 const History = require('../models/history')
 const calcMethods = require('../methods/calcMethods')
 const dbMethods = require('../methods/dbMethods')
@@ -59,10 +60,10 @@ router.patch('/crash', async (req, res, next) => {
     // console.log('Starting crash')
     // retrieve all Beers
     let allBeers = await Beers.find({})
-
+    console.log('this is all the beers', allBeers)
     await Promise.all(
-      allBeers.map(beer => {
-        beer.currentPrice = calcMethods.marketCrash(beer)
+      allBeers.map(async beer => {
+        beer.currentPrice = await calcMethods.marketCrash(beer)
         return beer
       })
     )

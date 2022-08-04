@@ -16,25 +16,21 @@ module.exports = mongoose.model('settings', {
     type: Number,
     required: true
   },
-  marketCrash: [
-    {
-      active: {
-        type: Boolean
-      },
-      duration: {
-        type: Number,
-        required: true
-      },
-      upTrendDiscount: {
-        type: Number,
-        required: true
-      },
-      downTrendDiscount: {
-        type: Number,
-        required: true
-      }
-    }
-  ]
+  crashActive: {
+    type: Boolean
+  },
+  duration: {
+    type: Number,
+    required: true
+  },
+  upTrendDiscount: {
+    type: Number,
+    required: true
+  },
+  downTrendDiscount: {
+    type: Number,
+    required: true
+  }
 })
 
 // module.exports = Houses
