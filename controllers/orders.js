@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
 // Create GET controller
 router.get('/', async (req, res) => {
   //
-  res.render('orders')
+  // res.render('orders')
 })
 
 // Create PATCH controller
