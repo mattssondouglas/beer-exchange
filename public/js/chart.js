@@ -25,59 +25,31 @@ const getDataFromAPI = async () => {
   // data = rawData.map(e => {
   // etc.
   // })
-
+  // console.log(rawData)
   // const labels = ['Hour 1', 'Hour 2', 'Hour 3', 'Hour 4', 'Hour 5', 'Hour 6']
-  const labels = rawData.map(history => history.timestamp)
 
-  let beers = rawData.map(history => history.beers.map(beer => beer))
-
-  let beerNames = rawData.map(history => history.beers.map(beer => beer.name))
-
-  let beerPrices = rawData.map(history =>
-    history.beers.map(beer => beer.currentPrice)
-  )
-
-  console.log(
-    rawData.map(history =>
-      history.beers.map(beer => {
-        return {
-          label: beerNames,
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: beerPrices
-        }
-      })
-    )
-  )
+  console.log(rawData.beerPrices)
 
   const data = {
-    labels: labels,
-    datasets: rawData.map(history =>
-      history.beers.map(beer => {
-        return {
-          label: beerNames,
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: beerPrices
-        }
-      })
-    )
-
+    labels: rawData.labels,
+    datasets: rawData.beers.map(beer => {
+			return {
+				label: beer.name,
+				backgroundColor: 'rgb(255, 99, 132)',
+				borderColor: 'rgb(255, 99, 132)',
+				data: [
+					beer.currentPrice[0],
+					beer.currentPrice[1],
+					beer.currentPrice[2],
+					2,
+					20,
+					30,
+					45
+				]
+			}
+		})
+	}
     // [
-    //   {
-    //     label: beerNames[0],
-    //     backgroundColor: 'rgb(255, 99, 132)',
-    //     borderColor: 'rgb(255, 99, 132)',
-    //     data: [
-    //       beer.currentPrice[0],
-    //       beer.currentPrice[1],
-    //       beer.currentPrice[2],
-    //       2,
-    //       20,
-    //       30,
-    //       45
-    //     ]
-    //   },
     //   {
     //     label: 'Leo',
     //     backgroundColor: 'rgb(0, 99, 132)',
