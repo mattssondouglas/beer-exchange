@@ -82,6 +82,6 @@ let decrease = setInterval(() => {
 
 // Stop after 60 seconds
 
-setInterval(() => {
-  clearInterval(decrease)
-}, 200 * 1000)
+// setInterval(() => {
+//   clearInterval(decrease)
+// }, 200 * 1000)
