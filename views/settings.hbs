@@ -1,35 +1,40 @@
 <!-- Nav -->
 <nav>
-	<div class="container text-center pt-2">
-		<div class="row row-cols-4 navBeers">
-			<div class="col col-lg-2">
+	<div class="container text-center m-3 p-0">
+		<div class="row row-cols-12 navBeers">
+			<!-- logo -->
+			<div class="col">
 				<a href="./">
-					<button type="button" class="btn btn-success">Return Home</button>
+					<img src="https://i.pinimg.com/736x/4f/be/f3/4fbef3d62f8ddd46d70d96a2256f14d1.jpg" alt="logo" class="logo">
 				</a>
 			</div>
-			<div class="col col-lg-2">
+			<!-- home btn -->
+			<div class="col">
+				<a href="./">
+					<button type="button" class="btn top btn-light p-2 mt-2">Return Home</button>
+				</a>
+			</div>
+			<!-- create beer -->
+			<div class="col">
 				<a href="./create">
-					<button type="button" class="btn btn-success">Create Beer</button>
+					<button type="button" class="btn top btn-light p-2 mt-2">Create Beer</button>
 				</a>
 			</div>
-			<div class="col col-lg-8">
-				<a href="/">
-					<img src="/images/beer_logo.png" alt="logo" class="logo">
-				</a>
-			</div>
-			<div class="col col-lg-1">
+			<!-- reset prices btn -->
+			<div class="col">
 				<form action="./beers/reset/?_method=PATCH" method="POST">
-					<button class="btn btn-primary">Reset prices</button>
+					<button class="btn top btn-light p-2 mt-2">Reset prices</button>
 				</form>
 			</div>
-			<div class="col col-lg-1">
+			<!-- market crash btn -->
+			<div class="col">
 				{{#if mySettings.crashActive}}
 				<form action="/beers/crash?_method=PATCH" method="POST">
-					<button type="submit" class="btn btn-danger">End Market Crash</button>
+					<button type="submit" class="btn top btn-light p-2 mt-2">End Market Crash</button>
 				</form>
 				{{else}}
 				<form action="/beers/crash?_method=PATCH" method="POST">
-					<button type="submit" class="btn btn-danger">Market Crash</button>
+					<button type="submit" class="btn top btn-light p-2 mt-2">Market Crash</button>
 				</form>
 				{{/if}}
 			</div>
@@ -39,23 +44,21 @@
 
 
 <!-- Start> Form -->
-<div class="container bg-light rounded createForm">
+<div class="container frm rounded createForm py-2 px-3">
+	<!-- logo -->
 
-
+	<!-- form -->
 	<form action="/settings?_method=PATCH" method="POST">
-		<a href="./">
-			<img src="/images/beer_logo.png" alt="logo" class="logo">
-		</a> <h1>Settings</h1>
 		<h5 class= "mt-5">Beer Price settings</h5>
 		<label class="form-label">Percentage Price drop</label>
 		<div class="input-group mb-3">
       <input type="number" step="any" min="0.1" max="100" class="form-control" onkeyup="pricedrop(value)" name="priceDrop" value="{{mySettings.priceDrop}}"/>
-			<small class="pricedrop">A beer that costs 70฿ will drop in price in the following increments </small>
+			<small class="pricedrop">Price of beer will drop in the following increments </small>
 		</div>
 	<label class="form-label">Percentage price increase</label>
 		<div class="input-group mb-3">
       <input type="number" step="any" min="0.1" max="100" class="form-control" onkeyup="priceincrease(value)" name="priceIncrease" value="{{mySettings.priceIncrease}}"/>
-			<small class="priceincrease">A beer that costs 70฿ will increase in price in the following increments </small>
+			<small class="priceincrease">Price of beer will drop in the following increments</small>
     </div>
 		<!-- <label class="form-label">TBC: Price Change Interval</label>
 		<div class="input-group mb-3">
@@ -90,3 +93,8 @@
 	</form>
 </div>
 <!-- END Form -->
+<footer class="foot">
+	<div>
+
+	</div>
+</footer>
