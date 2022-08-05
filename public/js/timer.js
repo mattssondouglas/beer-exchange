@@ -74,9 +74,9 @@ let ticker = setInterval(() => {
   if (window.location.href.includes('ticker')) {
     updateTicker()
   }
-}, 1 * 1000)
+}, 1 * 5000)
 
-let num = 1
+let num = 5
 
 let decrease = setInterval(() => {
   updateBeers()
