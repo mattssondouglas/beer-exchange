@@ -74,7 +74,7 @@ let ticker = setInterval(() => {
   if (window.location.href.includes('ticker')) {
     updateTicker()
   }
-}, 10 * 1000)
+}, 1 * 1000)
 
 let num = 1
 

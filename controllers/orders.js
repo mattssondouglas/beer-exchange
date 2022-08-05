@@ -23,7 +23,6 @@ router.post('/', async (req, res) => {
   let order = await Orders.create(tempOrder)
 
   let crashActive = await dbMethods.checkCrashStatus()
-  // console.log('this is all the beers', allBeers)
 
   if (!crashActive) {
     let updatedPrice = (beer.currentPrice * priceIncrease).toFixed(2)
@@ -39,7 +38,7 @@ router.post('/', async (req, res) => {
 // Create GET controller
 router.get('/', async (req, res) => {
   //
-  res.render('orders')
+  // res.render('orders')
 })
 
 // Create PATCH controller
