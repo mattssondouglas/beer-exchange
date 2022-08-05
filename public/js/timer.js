@@ -64,7 +64,7 @@ const getSettings = async () => {
 }
 let mySettings = 23
 mySettings = getSettings()
-console.log('settings are: ' + mySettings)
+// console.log('settings are: ', mySettings)
 
 // console.log('location is ' + window.location.href.includes('ticker'))
 // updateBeers()
@@ -74,9 +74,9 @@ let ticker = setInterval(() => {
   if (window.location.href.includes('ticker')) {
     updateTicker()
   }
-}, 10 * 1000)
+}, 1 * 1000)
 
-let num = 5
+let num = 1
 
 let decrease = setInterval(() => {
   updateBeers()

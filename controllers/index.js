@@ -18,7 +18,8 @@ router.get('/', async (req, res) => {
     // if (settings.marketCrash[0].active) {
     //   mySettings = true
     // }
-    let crashActive = dbMethods.checkMarketCrash()
+    let crashActive = await dbMethods.checkCrashStatus()
+    // console.log('INDEXJS: Crash active is set to: ', crashActive)
     // console.log(beers)
     res.render('beers', { beers, crashActive })
   } catch (err) {
