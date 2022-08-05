@@ -5,7 +5,7 @@
 			<!-- logo -->
 			<div class="col">
 				<a href="./">
-					<img src="https://i.pinimg.com/736x/4f/be/f3/4fbef3d62f8ddd46d70d96a2256f14d1.jpg" alt="logo" class="logo">
+					<img src="/images/logo.png" alt="logo" class="logo">
 				</a>
 			</div>
 			<!-- home btn -->
@@ -30,7 +30,7 @@
 			<div class="col">
 				{{#if mySettings.crashActive}}
 				<form action="/beers/crash?_method=PATCH" method="POST">
-					<button type="submit" class="btn top btn-light p-2 mt-2">End Market Crash</button>
+					<button type="submit" class="btn top btn-danger p-2 mt-2">End Market Crash</button>
 				</form>
 				{{else}}
 				<form action="/beers/crash?_method=PATCH" method="POST">
