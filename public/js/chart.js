@@ -21,8 +21,6 @@ const getDataAndCreateChart = async () => {
 
 const getDataAndUpdateChart = async () => {
   let data = await getDataFromAPI()
-  console.log(data.labels)
-  console.log(data.labels[data.labels.length - 1])
   myChart.data.labels.push(data.labels[data.labels.length - 1])
   myChart.data.labels.shift()
   myChart.data.datasets.forEach((dataset, index) => {
@@ -37,6 +35,5 @@ const getDataAndUpdateChart = async () => {
 getDataAndCreateChart()
 
 setInterval(() => {
-  console.log('hello')
   getDataAndUpdateChart()
 }, 5000)

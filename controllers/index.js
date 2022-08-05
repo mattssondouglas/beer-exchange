@@ -110,12 +110,6 @@ router.get('/chartdata', async (req, res, next) => {
       })
     }
 
-    console.log(
-      latestHistory.map(history => {
-        return history
-      })
-    )
-
     res.json(data)
   } catch (err) {
     throw err
