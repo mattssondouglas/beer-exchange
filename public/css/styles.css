@@ -76,3 +76,8 @@ body {
 input {
   margin-right: 7px;
 }
+/* create */
+.bg-light {
+  margin-top: 20%;
+  padding: 15px;
+}

@@ -76,9 +76,9 @@ let ticker = setInterval(() => {
 
 let num = 5
 
-let decrease = setInterval(() => {
-  updateBeers()
-}, num * 1000)
+// let decrease = setInterval(() => {
+//   updateBeers()
+// }, num * 1000)
 
 // Stop after 60 seconds
 
