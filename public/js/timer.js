@@ -15,6 +15,20 @@ const updateBeers = async () => {
     })
 }
 
+const beerPrices = async () => {
+  fetch('/beers', {
+    method: 'GET'
+  })
+    .then(response => response.json())
+    .then(beers => {
+      beers.forEach((beer, i) => {
+        document.querySelectorAll('.price')[i].innerHTML =
+          beer.currentPrice + '฿'
+      })
+    })
+    .catch(err => {})
+}
+
 const updateTicker = async () => {
   fetch('/beers', {
     method: 'GET'
@@ -75,10 +89,6 @@ let ticker = setInterval(() => {
 }, 1 * 5000)
 
 let num = 5
-
-// let decrease = setInterval(() => {
-//   updateBeers()
-// }, num * 1000)
 
 // Stop after 60 seconds
 
