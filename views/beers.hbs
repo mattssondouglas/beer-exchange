@@ -23,7 +23,8 @@
 {{/if}}
 <!-- buttons for beers -->
 <div class="Beers item-center p-2">
-	<div class="row row-cols-3">
+	<div class="row row-cols-2">
+		<div class="row row-cols-3">
 		<!-- one button -->
 
 		{{#each beers as |beer|}}
@@ -55,4 +56,22 @@
 		{{/each}}
 		<!--  -->
 	</div>
+	<div class="container">
+<div class="row summary">
+		<h2>Beer Exchange</h2>
+	</div>
+	<div class="row summary">
+		<h2>Order Items</h2>
+		<p>This is the list of items ordered</p>
+	</div>
+	<div class="row summary">
+		<h2>Order Total</h2>
+		<p>This is the total cost of the order</p>
+	</div>
+	<div class="row summary">
+		<h2>Order Buttons</h2>
+		<p>Buttons to place order or clear cart</p>
+	</div>
+</div>
+</div>
 </div>
