@@ -76,6 +76,7 @@ let ticker = setInterval(() => {
 
 let num = 5
 
+//UNCOMMENT TO START DECREASE
 // let decrease = setInterval(() => {
 //   updateBeers()
 // }, num * 1000)
