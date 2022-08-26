@@ -1,4 +1,5 @@
 <script type="text/javascript" src='/js/update.js' defer></script>
+<script type="text/javascript" src='/js/beers.js' defer></script>
 <!-- nav -->
 
 <div class="container-fluid px-5">
@@ -57,21 +58,26 @@
 		<!--  -->
 	</div>
 	<div class="container">
-<div class="row summary">
-		<h2>Beer Exchange</h2>
-	</div>
-	<div class="row summary">
-		<h2>Order Items</h2>
-		<p>This is the list of items ordered</p>
-	</div>
-	<div class="row summary">
-		<h2>Order Total</h2>
-		<p>This is the total cost of the order</p>
-	</div>
-	<div class="row summary">
-		<h2>Order Buttons</h2>
-		<p>Buttons to place order or clear cart</p>
-	</div>
+		<div class="row summary">
+				<h2>Beer Exchange</h2>
+		</div>
+		<div class="row summary">
+				<h2>Order Items</h2>
+				<p>This is the list of items ordered today</p>
+				<p>End of List</p>
+<!-- {{#each orders as |order|}} -->
+				<!-- <p>{{items}}</p> -->
+				<!-- {{/each}} -->
+
+		</div>
+		<div class="row summary">
+				<h2>Order Total</h2>
+				<p>This is the total cost of the order</p>
+		</div>
+		<div class="row summary">
+				<h2>Order Buttons</h2>
+				<p>Buttons to place order or clear cart</p>
+		</div>
 </div>
 </div>
 </div>
